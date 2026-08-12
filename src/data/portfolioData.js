@@ -11,9 +11,9 @@ export const personalInfo = {
     first: 'SOHAM',
     last: 'WAGALE',
   },
-  role: 'Computer Science Student | Aspiring Software Engineer',
-  tagline: 'Building scalable full-stack applications with React, FastAPI, Node.js & Cloud.',
-  bio: 'Computer Science student (CGPA 8.6) with hands-on experience in full-stack development. Skilled in building scalable applications, solved 140+ Leetcode problems and seeking a software engineering internship to apply and grow technical expertise.',
+  role: 'Computer Science Student | Full-Stack Software Developer',
+  tagline: 'Building full-stack applications with React, TypeScript, FastAPI, Node.js, and cloud technologies.',
+  bio: 'Computer Science student with 1.5+ years of hands-on full-stack development experience. Skilled in building scalable applications with React, Node.js, and cloud technologies. Solved 140+ LeetCode problems and actively seeking a challenging software engineering internship.',
   location: {
     city: 'Kolhapur',
     state: 'Maharashtra',
@@ -31,8 +31,8 @@ export const personalInfo = {
   },
   status: {
     available: true,
-    text: 'Open to internship opportunities — 2026',
-    navText: 'Open to work',
+    text: 'Open to Software Engineering Internships',
+    navText: 'Open to internships',
     gradYear: 'Expected 2027',
   },
   metrics: {
@@ -76,66 +76,120 @@ export const experiences = [
 export const projects = [
   {
     fig: 'FIG. 01',
-    name: 'MEDI-PASS',
-    title: 'Medi-Pass – Medical Health Records Management System',
-    desc: 'Built a prototype system for managing patient medical records using Firebase (Firestore) with role-based access control, focused on data privacy and usability.',
-    stack: ['REACT', 'FIREBASE', 'FIRESTORE', 'RBAC'],
-    github: 'https://github.com/sohamwagale',
-    live: 'https://medi-pass-demo.vercel.app', // Update with your actual deployed link!
+    name: 'AI-WORKFLOW',
+    title: 'AI Workflow Automation – Visual Workflow Builder',
+    desc: 'Built an AI-assisted visual workflow automation platform for designing, executing, and monitoring automated task pipelines through a node-based interface.',
+    stack: ['REACT','Next.JS', 'TYPESCRIPT','PRISMA', 'NODE.JS', 'AI', 'WORKFLOW AUTOMATION'],
+    github: 'https://github.com/sohamwagale/AI-Workflow-Automation',
+    live: null,
   },
   {
     fig: 'FIG. 02',
-    name: 'SOCIETY-HUB',
-    title: 'Society-Hub – Residential Society Management System',
-    desc: 'Engineered a full stack monorepo application with a FastAPI backend deployed on AWS, a React Native mobile app, and a React web app, implementing announcements, polls, and complaint tracking.',
-    stack: ['FASTAPI', 'REACT NATIVE', 'REACT', 'SUPABASE', 'AWS'],
-    github: 'https://github.com/sohamwagale',
-    live: 'https://society-hub-demo.vercel.app', // Update with your actual deployed link!
+    name: 'LEETCODE',
+    title: 'LeetCode – Data Structures & Algorithms',
+    desc: 'Solved 140+ algorithmic problems across arrays, strings, linked lists, stacks, sliding windows, trees, and other core data structures and algorithms.',
+    stack: ['C++', 'DSA', 'ALGORITHMS', 'LEETCODE'],
+    github: 'https://github.com/sohamwagale/Leetcode',
+    live: null,
   },
   {
     fig: 'FIG. 03',
+    name: 'SOCIETY-HUB',
+    title: 'Society-Hub – Residential Society Management System',
+    desc: 'Built a full-stack residential society management platform with React Native/Expo and React clients, a FastAPI backend, SQLAlchemy, authentication, maintenance billing, complaints, announcements, and polling. Deployed the backend using AWS Lambda and integrated Firebase Cloud Messaging for notifications.',
+    stack: ['FASTAPI', 'REACT NATIVE', 'REACT', 'SUPABASE', 'AWS'],
+    github: 'https://github.com/sohamwagale/Society-Hub',
+    live: 'https://sohamwagale.github.io/Society-Hub/',
+  },
+  {
+    fig: 'FIG. 04',
+    name: 'MEDI-PASS',
+    title: 'Medi-Pass – Medical Health Records Management System',
+    desc: 'Built a prototype system for managing patient medical records using Firebase Firestore with role-based access control, focused on data privacy and usability.',
+    stack: ['REACT', 'FIREBASE', 'FIRESTORE', 'RBAC'],
+    github: 'https://github.com/sohamwagale/MediPass',
+    live: 'https://sohamwagale.github.io/MediPass/',
+  },
+  {
+    fig: 'FIG. 05',
     name: 'SHOP-EASE',
     title: 'Shop-Ease – Full-Stack E-Commerce Web Application',
     desc: 'Built a full-stack e-commerce application with a React, TypeScript, and Tailwind CSS frontend and a custom Node.js/Express REST API backed by MongoDB, featuring product listings, cart, checkout, and order management.',
     stack: ['REACT', 'TYPESCRIPT', 'NODE.JS', 'EXPRESS', 'MONGODB', 'TAILWIND'],
-    github: 'https://github.com/sohamwagale',
-    live: 'https://shop-ease-demo.vercel.app', // Update with your actual deployed link!
+    github: 'https://github.com/sohamwagale/Shop-Ease',
+    live: 'https://shop-ease-8xko.onrender.com/',
   },
   {
-    fig: 'FIG. 04',
+    fig: 'FIG. 06',
     name: 'GIT-HUB',
-    title: 'Gt-Hib – Mini Version Control System',
-    desc: 'Features repository management, issue tracking, user profile management, community member search, custom VCS commands, and interactive contribution heatmaps wrapped in a sleek GitHub Dark UI theme.',
+    title: 'Git-Hub – Mini Version Control System',
+    desc: 'Built a GitHub-inspired platform featuring repository management, issue tracking, user profiles, community member search, custom version-control commands, and interactive contribution heatmaps.',
     stack: ['NODE.JS', 'EXPRESS', 'MONGODB', 'REACT', 'DOCKER'],
-    github: 'https://github.com/sohamwagale',
-    live: null, // Set to string URL if deployed
+    github: 'https://github.com/sohamwagale/Guthib',
+    live: null,
   },
 ]
 
 export const skillCategories = [
   {
     name: 'LANGUAGES',
-    items: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C/C++', 'HTML', 'CSS', 'SQL'],
+    items: [
+      'TypeScript',
+      'JavaScript',
+      'Python',
+      'Java',
+      'C/C++',
+      'SQL',
+    ],
   },
   {
-    name: 'WEB & MOBILE',
-    items: ['React.js', 'React Native', 'FastAPI', 'Tailwind CSS', 'REST API Design', 'Expo'],
+    name: 'FRONTEND',
+    items: [
+      'React',
+      'React Native',
+      'Next.js',
+      'Tailwind CSS',
+      'Expo',
+    ],
+  },
+  {
+    name: 'BACKEND',
+    items: [
+      'Node.js',
+      'Express',
+      'FastAPI',
+      'REST APIs',
+    ],
   },
   {
     name: 'DATABASES',
-    items: ['MongoDB', 'Firebase', 'Supabase', 'Firestore'],
+    items: [
+      'PostgreSQL',
+      'MySQL',
+      'MongoDB',
+      'SQLite',
+      'Firebase',
+    ],
   },
   {
     name: 'CLOUD & DEVOPS',
-    items: ['AWS', 'Docker (basics)', 'CI/CD (GitHub Actions)', 'Git / GitHub'],
+    items: [
+      'AWS',
+      'Docker',
+      'GitHub Actions',
+      'Git',
+      'GitHub',
+      'Nginx',
+    ],
   },
   {
-    name: 'CORE CS',
-    items: ['Data Structures & Algorithms', 'Object-Oriented Programming', 'DBMS', 'System Design'],
-  },
-  {
-    name: 'SOFT SKILLS',
-    items: ['Problem Solving', 'Analytical Thinking', 'Team Collaboration', 'Communication', 'Time Management'],
+    name: 'CS FUNDAMENTALS',
+    items: [
+      'Data Structures & Algorithms',
+      'Object-Oriented Programming',
+      'DBMS',
+      'System Design',
+    ],
   },
 ]
 
@@ -152,5 +206,10 @@ export const education = {
     { lang: 'Hindi', level: 'Fluent' },
     { lang: 'Marathi', level: 'Native' },
   ],
-  interests: ['Software Development', 'System Design', 'Competitive Programming'],
+  interests: [
+  'Full-Stack Development',
+  'Backend Engineering',
+  'System Design',
+  'Cloud Computing',
+  'Competitive Programming'],
 }
