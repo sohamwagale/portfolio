@@ -26,9 +26,8 @@ export default function ProjectsSection() {
     <section className="section" id="projects" ref={ref} aria-labelledby="proj-title">
       <div className="wrap">
         <div className="sec-head">
-          <div className="sec-num">02</div>
           <h2 className="sec-title" id="proj-title">
-            SELECTED <span className="ghost">WORK</span>
+            Selected <span className="ghost">Work</span>
           </h2>
         </div>
       </div>

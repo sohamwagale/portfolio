@@ -34,9 +34,8 @@ export default function ContactSection() {
       <section className="contact-sec" id="contact" aria-labelledby="contact-title">
         <div className="wrap">
           <div className="sec-head">
-            <div className="sec-num">05</div>
             <h2 className="sec-title" id="contact-title">
-              CONTACT <span className="ghost">& REACH</span>
+              Contact <span className="ghost">&amp; Reach</span>
             </h2>
           </div>
 
@@ -63,7 +62,6 @@ export default function ContactSection() {
                 }}
               >
                 {[
-                  personalInfo.location.coords,
                   `${personalInfo.location.city.toUpperCase()} · ${personalInfo.location.state.toUpperCase()} · ${personalInfo.location.country.toUpperCase()}`,
                   personalInfo.location.timezone,
                 ].map((t) => (
@@ -92,46 +90,14 @@ export default function ContactSection() {
                 ))}
               </div>
 
-              {/* Technical notation block */}
-              <div
-                style={{
-                  marginTop: '28px',
-                  padding: '16px',
-                  border: '1px solid var(--rule)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '6px',
-                }}
-              >
-                {[
-                  ['DOC', personalInfo.documentMeta.docCode.split(' ◆ ')[1] || 'SW-PORTFOLIO-2026'],
-                  ['REV', '02'],
-                  ['LANG', education.languages.map(l => l.lang.substring(0,2).toUpperCase()).join(' / ')],
-                  ['INTEREST', education.interests.slice(0, 2).map(i => i.toUpperCase()).join(' · ')],
-                ].map(([k, v]) => (
-                  <div
-                    key={k}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      fontSize: '9.5px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.15em',
-                    }}
-                  >
-                    <span style={{ color: 'var(--dim)' }}>{k}</span>
-                    <span style={{ color: 'var(--muted)' }}>{v}</span>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
           <div className="footer-bar">
             <span className="footer-copy">
-              © {new Date().getFullYear()} {personalInfo.name.first} {personalInfo.name.last} · ALL RIGHTS RESERVED · {personalInfo.documentMeta.navDocCode}
+              &copy; {new Date().getFullYear()} {personalInfo.name.first.charAt(0)}{personalInfo.name.first.slice(1).toLowerCase()} {personalInfo.name.last.charAt(0)}{personalInfo.name.last.slice(1).toLowerCase()} &middot; All rights reserved
             </span>
-            <span className="footer-tech">REACT + VITE / BEBAS NEUE + IBM PLEX MONO</span>
+            <span className="footer-tech">Built with React + Vite</span>
           </div>
         </div>
       </section>

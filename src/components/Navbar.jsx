@@ -14,11 +14,11 @@ export default function Navbar() {
 
         <ul className="nav-links" role="list">
           {[
-            ['experience', '01 / Work'],
-            ['projects',   '02 / Projects'],
-            ['skills',     '03 / Skills'],
-            ['education',  '04 / Education'],
-            ['contact',    '05 / Contact'],
+            ['experience', 'Work'],
+            ['projects',   'Projects'],
+            ['skills',     'Skills'],
+            ['education',  'Education'],
+            ['contact',    'Contact'],
           ].map(([id, label]) => (
             <li key={id}>
               <a

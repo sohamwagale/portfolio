@@ -26,9 +26,8 @@ export default function EducationSection() {
     <section className="section" id="education" ref={ref} aria-labelledby="edu-title">
       <div className="wrap">
         <div className="sec-head">
-          <div className="sec-num">04</div>
           <h2 className="sec-title" id="edu-title">
-            EDUCATION <span className="ghost">& DATA</span>
+            Education <span className="ghost">&amp; Background</span>
           </h2>
         </div>
 
@@ -36,9 +35,9 @@ export default function EducationSection() {
           {/* Left: degree info */}
           <div className="edu-left reveal">
             <div className="edu-degree-label label">Degree</div>
-            <div className="edu-degree-name">{education.degree.toUpperCase()}<br />OF TECHNOLOGY</div>
-            <div className="edu-degree-name" style={{ fontSize: 'clamp(20px, 2.5vw, 32px)', color: 'var(--muted)', marginTop: '4px' }}>
-              {education.field.toUpperCase()}
+            <div className="edu-degree-name">{education.degree}</div>
+            <div className="edu-degree-name" style={{ fontSize: 'clamp(18px, 2.2vw, 28px)', color: 'var(--muted)', marginTop: '4px', fontWeight: 500 }}>
+              {education.field}
             </div>
             <div className="edu-inst label">
               {education.institution}<br />

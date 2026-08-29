@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import Ticker from './Ticker'
 import { personalInfo } from '../data/portfolioData'
 
 export default function Hero() {
@@ -19,15 +18,14 @@ export default function Hero() {
       {/* top meta strip */}
       <div className="hero-strip">
         <div className="hero-strip-left">
-          <span className="label reveal">{personalInfo.location.coords}</span>
-          <span className="label reveal reveal-delay-1" style={{ color: 'var(--dim)' }}>
+          <span className="label reveal" style={{ color: 'var(--dim)' }}>
             {personalInfo.location.city.toUpperCase()}, {personalInfo.location.state.toUpperCase()}, {personalInfo.location.country.toUpperCase()}
           </span>
         </div>
         <div className="hero-strip-right">
-          <span className="label reveal">INDEX 001</span>
+          <span className="label reveal">{personalInfo.location.timezone}</span>
           <span className="label reveal reveal-delay-1" style={{ color: 'var(--dim)' }}>
-            {personalInfo.role.toUpperCase()}
+            {personalInfo.role.split(' | ')[0]}
           </span>
         </div>
       </div>
@@ -72,48 +70,26 @@ export default function Hero() {
         </div>
       </div>
 
-      <Ticker />
-
       {/* bottom action bar */}
       <div className="hero-bottom">
         <div className="hero-scroll-text">SCROLL</div>
 
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <a
             id="hero-contact-link"
             href="#contact"
             onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '10.5px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.18em',
-              color: 'var(--white)',
-              padding: '8px 16px',
-              border: '1px solid var(--rule)',
-              transition: 'border-color 0.15s, background 0.15s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--silver)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--rule)'; e.currentTarget.style.background = 'transparent' }}
+            className="btn-primary"
           >
-            GET IN TOUCH →
+            Get in touch →
           </a>
           <a
             id="hero-projects-link"
             href="#projects"
             onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) }}
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '10.5px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.18em',
-              color: 'var(--muted)',
-              transition: 'color 0.15s',
-            }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--white)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}
+            className="btn-ghost"
           >
-            VIEW WORK
+            View work
           </a>
         </div>
 

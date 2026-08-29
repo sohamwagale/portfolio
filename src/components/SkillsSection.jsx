@@ -28,9 +28,8 @@ export default function SkillsSection() {
     <section className="section" id="skills" ref={ref} aria-labelledby="skills-title">
       <div className="wrap">
         <div className="sec-head">
-          <div className="sec-num">03</div>
           <h2 className="sec-title" id="skills-title">
-            SKILLS <span className="ghost">& TECH</span>
+            Skills <span className="ghost">&amp; Technologies</span>
           </h2>
         </div>
 

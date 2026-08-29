@@ -26,9 +26,8 @@ export default function ExperienceSection() {
     <section className="section" id="experience" ref={ref} aria-labelledby="exp-title">
       <div className="wrap">
         <div className="sec-head">
-          <div className="sec-num">01</div>
           <h2 className="sec-title" id="exp-title">
-            WORK <span className="ghost">EXP.</span>
+            Work <span className="ghost">Experience</span>
           </h2>
         </div>
 

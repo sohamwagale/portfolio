@@ -1,5 +1,4 @@
 import './index.css'
-import RegistrationMarks from './components/RegistrationMarks'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import ExperienceSection from './components/ExperienceSection'
@@ -11,7 +10,6 @@ import ContactSection from './components/ContactSection'
 function App() {
   return (
     <>
-      <RegistrationMarks />
       <Navbar />
       <main>
         <Hero />
