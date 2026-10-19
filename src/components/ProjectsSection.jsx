@@ -78,9 +78,8 @@ export default function ProjectsSection() {
                         href={p.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="proj-link"
+                        className="proj-link proj-link-live"
                         aria-label={`${p.name} Live Deployment`}
-                        style={{ color: 'var(--white)' }}
                       >
                         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="square" strokeLinejoin="miter" aria-hidden="true">
                           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>

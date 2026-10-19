@@ -39,7 +39,7 @@ export const personalInfo = {
     cgpa: '8.6',
     maxCgpa: '10.0',
     leetcodeSolved: '140+',
-    projectsCount: '4',
+    projectsCount: '6',
     rolesCount: '2',
   },
   documentMeta: {
