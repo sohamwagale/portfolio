@@ -1,0 +1,527 @@
+/* =========================================================================
+   RETRO ENCHANTED FOREST CARD DESIGN SYSTEM
+   Pixel borders, Parchment papers, RPG HUDs, and Item Rarities
+   ========================================================================= */
+
+:root {
+  --rpg-bg-dark: #0a1312;
+  --rpg-forest-deep: #0e221d;
+  --rpg-forest-mid: #1b3b32;
+  --rpg-forest-light: #2c594c;
+  --rpg-gold-bright: #ffd166;
+  --rpg-gold-dim: #c99738;
+  --rpg-teal-glow: #4fd1c5;
+  --rpg-purple-twilight: #2d1e3e;
+  --rpg-paper-light: #f7eed8;
+  --rpg-paper-mid: #e8d7b5;
+  --rpg-paper-dark: #3b2818;
+  --rpg-text-main: #24160a;
+  --rpg-text-muted: #5c442f;
+
+  /* Item Rarities */
+  --rpg-rarity-common: #a0aec0;
+  --rpg-rarity-rare: #4299e1;
+  --rpg-rarity-epic: #9f7aea;
+  --rpg-rarity-legendary: #ecc94b;
+
+  --rpg-font-pixel: "Courier New", Courier, monospace, "Apple Color Emoji", monospace;
+}
+
+/* Base Pixel Box Container */
+.rpg-pixel-box {
+  background: var(--rpg-paper-light);
+  color: var(--rpg-text-main);
+  border: 4px solid var(--rpg-paper-dark);
+  box-shadow: 0 0 0 2px var(--rpg-gold-dim), 0 8px 24px rgba(0, 0, 0, 0.7);
+  position: relative;
+  font-family: var(--rpg-font-pixel);
+  box-sizing: border-box;
+}
+
+.rpg-pixel-box::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid var(--rpg-paper-dark);
+  pointer-events: none;
+}
+
+/* =========================================================================
+   1. CASE STUDY / PARCHMENT SCROLL CARD
+   ========================================================================= */
+.rpg-parchment-card {
+  max-width: 680px;
+  width: 100%;
+  padding: 24px;
+  border-radius: 2px;
+}
+
+.rpg-parchment-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--rpg-paper-dark);
+  border-bottom: 2px dashed var(--rpg-gold-dim);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rpg-parchment-badge {
+  font-size: 11px;
+  background: var(--rpg-paper-dark);
+  color: var(--rpg-gold-bright);
+  padding: 3px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.rpg-parchment-sub {
+  font-size: 13px;
+  color: var(--rpg-text-muted);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.rpg-parchment-body {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--rpg-text-main);
+}
+
+.rpg-parchment-section {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(59, 40, 24, 0.2);
+}
+
+.rpg-parchment-h4 {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--rpg-paper-dark);
+  margin-bottom: 4px;
+}
+
+.rpg-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.rpg-skill-tag {
+  font-size: 10px;
+  background: var(--rpg-paper-mid);
+  color: var(--rpg-paper-dark);
+  border: 1px solid var(--rpg-paper-dark);
+  padding: 2px 7px;
+  font-weight: bold;
+}
+
+.rpg-btn-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.rpg-parchment-btn {
+  background: var(--rpg-paper-dark);
+  color: var(--rpg-gold-bright);
+  border: 2px solid var(--rpg-gold-dim);
+  padding: 9px 16px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rpg-parchment-btn:hover {
+  background: #11241f;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.rpg-parchment-btn:active {
+  transform: translateY(1px);
+}
+
+/* =========================================================================
+   2. INVENTORY SKILL ITEM & DETAIL CARDS
+   ========================================================================= */
+.rpg-inv-slot {
+  width: 72px;
+  height: 72px;
+  background: var(--rpg-paper-mid);
+  border: 3px solid var(--rpg-paper-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+  text-align: center;
+  transition: transform 0.1s, background-color 0.15s;
+  box-sizing: border-box;
+  font-family: var(--rpg-font-pixel);
+}
+
+.rpg-inv-slot:hover,
+.rpg-inv-slot:focus-visible {
+  transform: scale(1.08);
+  background: #ffffff;
+  outline: none;
+}
+
+.rpg-inv-slot.rarity-common {
+  border-color: var(--rpg-rarity-common);
+}
+
+.rpg-inv-slot.rarity-rare {
+  border-color: var(--rpg-rarity-rare);
+  box-shadow: 0 0 8px rgba(66, 153, 225, 0.4);
+}
+
+.rpg-inv-slot.rarity-epic {
+  border-color: var(--rpg-rarity-epic);
+  box-shadow: 0 0 10px rgba(159, 122, 234, 0.5);
+}
+
+.rpg-inv-slot.rarity-legendary {
+  border-color: var(--rpg-rarity-legendary);
+  box-shadow: 0 0 12px rgba(236, 201, 75, 0.7);
+}
+
+.rpg-inv-icon {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.rpg-inv-name {
+  font-size: 9px;
+  font-weight: bold;
+  color: var(--rpg-paper-dark);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.rpg-inv-desc-card {
+  padding: 12px 14px;
+  background: var(--rpg-paper-mid);
+  border: 2px solid var(--rpg-paper-dark);
+  font-family: var(--rpg-font-pixel);
+  min-height: 72px;
+  border-radius: 2px;
+}
+
+.rpg-inv-desc-title {
+  font-weight: bold;
+  font-size: 13px;
+  color: var(--rpg-paper-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rpg-inv-desc-stat {
+  font-size: 11px;
+  color: var(--rpg-forest-deep);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.rpg-inv-desc-text {
+  font-size: 11px;
+  color: var(--rpg-text-muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* =========================================================================
+   3. RPG DIALOGUE BOX CARD
+   ========================================================================= */
+.rpg-dialogue-card {
+  max-width: 640px;
+  width: 100%;
+  padding: 16px 20px;
+  font-family: var(--rpg-font-pixel);
+}
+
+.rpg-dialogue-speaker {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--rpg-gold-dim);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rpg-dialogue-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--rpg-text-main);
+  min-height: 48px;
+  margin-bottom: 12px;
+}
+
+.rpg-dialogue-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.rpg-dialogue-opt-btn {
+  background: var(--rpg-paper-dark);
+  color: var(--rpg-gold-bright);
+  border: 2px solid var(--rpg-gold-dim);
+  padding: 6px 12px;
+  font-size: 11px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.rpg-dialogue-opt-btn:hover,
+.rpg-dialogue-opt-btn:focus-visible {
+  background: var(--rpg-gold-bright);
+  color: var(--rpg-paper-dark);
+  outline: none;
+}
+
+/* =========================================================================
+   4. HUD STATUS & XP CARD
+   ========================================================================= */
+.rpg-hud-card {
+  background: rgba(14, 34, 29, 0.94);
+  border: 2px solid var(--rpg-gold-dim);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  padding: 8px 14px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--rpg-font-pixel);
+  color: #e2e8f0;
+}
+
+.rpg-hud-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--rpg-gold-bright);
+  letter-spacing: 1px;
+}
+
+.rpg-xp-track {
+  width: 120px;
+  height: 10px;
+  background: #091714;
+  border: 1px solid var(--rpg-gold-dim);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.rpg-xp-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #38b2ac, #4fd1c5);
+  transition: width 0.4s ease;
+}
+
+.rpg-xp-text {
+  font-size: 11px;
+  color: #cbd5e0;
+  font-weight: bold;
+}
+
+/* =========================================================================
+   5. SIMPLE VIEW PROJECT CARD
+   ========================================================================= */
+.rpg-simple-card {
+  background: #0f2721;
+  border: 2px solid var(--rpg-forest-light);
+  padding: 18px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--rpg-font-pixel);
+  color: #e2e8f0;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.rpg-simple-card:hover {
+  border-color: var(--rpg-gold-bright);
+  transform: translateY(-2px);
+}
+
+.rpg-simple-badge {
+  font-size: 11px;
+  color: var(--rpg-gold-dim);
+  font-weight: bold;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.rpg-simple-card-title {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.rpg-simple-card-desc {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #cbd5e0;
+  margin-bottom: 14px;
+}
+
+/* =========================================================================
+   6. EXPERIENCE / TIMELINE CARD
+   ========================================================================= */
+.rpg-experience-card {
+  background: #0f2721;
+  border: 2px solid var(--rpg-forest-light);
+  padding: 16px 20px;
+  border-radius: 4px;
+  font-family: var(--rpg-font-pixel);
+  color: #e2e8f0;
+  transition: border-color 0.2s;
+}
+
+.rpg-experience-card:hover {
+  border-color: var(--rpg-teal-glow);
+}
+
+.rpg-exp-role {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.rpg-exp-org {
+  font-size: 13px;
+  color: var(--rpg-teal-glow);
+  margin-top: 2px;
+}
+
+.rpg-exp-bullets {
+  margin-top: 10px;
+  padding-left: 20px;
+  font-size: 13px;
+  color: #cbd5e0;
+  line-height: 1.6;
+}
+
+/* =========================================================================
+   7. LEGENDARY ITEM / RESUME FANFARE CARD
+   ========================================================================= */
+.rpg-legendary-card {
+  max-width: 520px;
+  width: 100%;
+  padding: 24px;
+  text-align: center;
+  font-family: var(--rpg-font-pixel);
+}
+
+.rpg-legendary-icon {
+  font-size: 36px;
+  margin-bottom: 8px;
+  animation: rpgFloatPulse 1.6s ease-in-out infinite;
+}
+
+.rpg-legendary-stats-box {
+  text-align: left;
+  background: var(--rpg-paper-mid);
+  padding: 14px;
+  border: 2px solid var(--rpg-paper-dark);
+  margin: 14px 0 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--rpg-text-main);
+}
+
+@keyframes rpgFloatPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* =========================================================================
+   8. QUEST LOG ENTRY CARD
+   ========================================================================= */
+.rpg-quest-card {
+  background: var(--rpg-paper-mid);
+  border: 2px solid var(--rpg-paper-dark);
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--rpg-font-pixel);
+  border-radius: 2px;
+  transition: background-color 0.15s;
+}
+
+.rpg-quest-card:hover {
+  background: #ffffff;
+}
+
+.rpg-quest-name {
+  font-weight: bold;
+  font-size: 13px;
+  color: var(--rpg-paper-dark);
+}
+
+.rpg-quest-zone {
+  font-size: 11px;
+  color: var(--rpg-text-muted);
+}
+
+/* =========================================================================
+   9. ACHIEVEMENT TOAST CARD
+   ========================================================================= */
+.rpg-toast-card {
+  background: #112620;
+  color: #ffffff;
+  border: 2px solid var(--rpg-gold-bright);
+  padding: 10px 16px;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--rpg-font-pixel);
+  animation: rpgToastIn 0.3s ease forwards;
+}
+
+.rpg-toast-icon {
+  font-size: 18px;
+}
+
+@keyframes rpgToastIn {
+  from { transform: translateX(40px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

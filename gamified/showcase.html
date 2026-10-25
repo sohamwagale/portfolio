@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro RPG Pixel Cards | Component Showcase & Copy Source</title>
+  <meta name="description" content="Interactive component library and live playground for the Retro RPG Card Design System. Copy React code in one click.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23132e27'/><rect x='7' y='2' width='2' height='8' fill='%2368d391'/><rect x='6' y='10' width='4' height='2' fill='%23ecc94b'/><rect x='7' y='12' width='2' height='3' fill='%23b7791f'/></svg>">
+  <link rel="stylesheet" href="./components/pixel-cards.css">
+
+  <style>
+    :root {
+      --showcase-bg: #07100e;
+      --showcase-surface: #0e201b;
+      --showcase-sidebar: #0a1714;
+      --showcase-border: #1b3d33;
+      --showcase-accent: #ffd166;
+      --showcase-teal: #4fd1c5;
+      --showcase-code-bg: #050b0a;
+      --showcase-text: #e2e8f0;
+      --showcase-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--showcase-bg);
+      color: var(--showcase-text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation Header */
+    header.showcase-header {
+      background: var(--showcase-sidebar);
+      border-bottom: 2px solid var(--showcase-border);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    .brand-title {
+      font-family: var(--rpg-font-pixel);
+      color: var(--showcase-accent);
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.5px;
+    }
+    .brand-badge {
+      font-size: 10px;
+      background: var(--rpg-forest-light);
+      color: var(--showcase-teal);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: system-ui, sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .header-links {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .header-btn {
+      background: #132d26;
+      border: 1px solid var(--showcase-border);
+      color: var(--showcase-accent);
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .header-btn:hover {
+      background: var(--showcase-accent);
+      color: #0b1a15;
+      transform: translateY(-1px);
+    }
+
+    /* Layout: Sidebar + Main Content */
+    .showcase-layout {
+      display: flex;
+      flex: 1;
+    }
+
+    aside.showcase-sidebar {
+      width: 280px;
+      background: var(--showcase-sidebar);
+      border-right: 2px solid var(--showcase-border);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: sticky;
+      top: 61px;
+      height: calc(100vh - 61px);
+      overflow-y: auto;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #060e0c;
+      border: 1px solid var(--showcase-border);
+      color: #fff;
+      padding: 8px 12px;
+      font-size: 13px;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--showcase-teal);
+    }
+
+    .nav-category {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--showcase-muted);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      padding-left: 8px;
+    }
+
+    .nav-item {
+      display: block;
+      padding: 8px 12px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 4px;
+      transition: all 0.15s;
+      font-family: var(--rpg-font-pixel);
+    }
+    .nav-item:hover, .nav-item.active {
+      background: #14332b;
+      color: var(--showcase-accent);
+      font-weight: bold;
+      transform: translateX(4px);
+    }
+
+    /* Main Showcase Content */
+    main.showcase-content {
+      flex: 1;
+      padding: 36px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+
+    .hero-banner {
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--showcase-border);
+    }
+    .hero-h1 {
+      font-size: 28px;
+      color: var(--showcase-accent);
+      font-family: var(--rpg-font-pixel);
+      margin-bottom: 8px;
+    }
+    .hero-p {
+      color: var(--showcase-muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 780px;
+    }
+
+    /* Component Section Block */
+    .component-block {
+      background: var(--showcase-surface);
+      border: 1px solid var(--showcase-border);
+      border-radius: 6px;
+      margin-bottom: 48px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    .component-header {
+      padding: 18px 24px;
+      background: rgba(6, 14, 12, 0.6);
+      border-bottom: 1px solid var(--showcase-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .component-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .component-name {
+      font-family: var(--rpg-font-pixel);
+      font-size: 18px;
+      color: var(--showcase-teal);
+      font-weight: bold;
+    }
+    .component-tag {
+      font-size: 11px;
+      background: #17382f;
+      color: var(--showcase-accent);
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+    .component-desc {
+      font-size: 13px;
+      color: var(--showcase-muted);
+      margin-top: 4px;
+    }
+
+    /* Interactive Live Preview Box */
+    .preview-box {
+      padding: 36px 24px;
+      background: radial-gradient(circle at center, #132a23 0%, #081411 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      overflow-x: auto;
+    }
+
+    /* Code View Tabs & Container */
+    .code-container {
+      background: var(--showcase-code-bg);
+      border-top: 1px solid var(--showcase-border);
+    }
+    .code-toolbar {
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #091310;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .code-tabs {
+      display: flex;
+      gap: 6px;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--showcase-muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: monospace;
+      transition: all 0.15s;
+    }
+    .tab-btn:hover {
+      color: #fff;
+    }
+    .tab-btn.active {
+      background: #14352b;
+      color: var(--showcase-accent);
+    }
+
+    .copy-btn {
+      background: #173b31;
+      border: 1px solid var(--showcase-border);
+      color: var(--showcase-accent);
+      font-size: 12px;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: monospace;
+      transition: all 0.15s;
+    }
+    .copy-btn:hover {
+      background: var(--showcase-accent);
+      color: #0b1a15;
+    }
+
+    pre.code-block {
+      padding: 16px 20px;
+      overflow-x: auto;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #f1f5f9;
+      background: #050b0a;
+      user-select: text;
+    }
+
+    /* Toast Notification for Copy */
+    #copy-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #112922;
+      border: 2px solid var(--showcase-accent);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+      font-family: var(--rpg-font-pixel);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1000;
+    }
+    #copy-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .showcase-sidebar { display: none; }
+      main.showcase-content { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="showcase-header">
+    <div class="brand-title">
+      <span>🌲 RETRO RPG CARDS</span>
+      <span class="brand-badge">REACT COMPONENT LIBRARY</span>
+    </div>
+    <div class="header-links">
+      <a href="./index.html" class="header-btn">🎮 Play RPG Adventure</a>
+      <a href="https://github.com/sohamwagale" target="_blank" rel="noopener noreferrer" class="header-btn">💻 GitHub Profile</a>
+    </div>
+  </header>
+
+  <div class="showcase-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="showcase-sidebar">
+      <input type="text" id="component-search" class="search-input" placeholder="🔍 Search component..." oninput="filterComponents(this.value)">
+
+      <div>
+        <div class="nav-category">Containers</div>
+        <a href="#pixelbox" class="nav-item">PixelBox</a>
+      </div>
+
+      <div>
+        <div class="nav-category">Projects & Case Studies</div>
+        <a href="#project-case-study" class="nav-item">ProjectCaseStudyCard</a>
+        <a href="#simple-project" class="nav-item">SimpleProjectCard</a>
+      </div>
+
+      <div>
+        <div class="nav-category">Inventory & Player Stats</div>
+        <a href="#inventory-slot" class="nav-item">InventorySkillSlot</a>
+        <a href="#inventory-detail" class="nav-item">InventoryDetailCard</a>
+        <a href="#hud-status" class="nav-item">HudStatusCard</a>
+      </div>
+
+      <div>
+        <div class="nav-category">Narrative & Quests</div>
+        <a href="#rpg-dialogue" class="nav-item">RpgDialogueCard</a>
+        <a href="#quest-log" class="nav-item">QuestLogCard</a>
+      </div>
+
+      <div>
+        <div class="nav-category">Experience & Celebrations</div>
+        <a href="#experience-card" class="nav-item">ExperienceCard</a>
+        <a href="#legendary-item" class="nav-item">LegendaryItemCard</a>
+        <a href="#achievement-toast" class="nav-item">AchievementToast</a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="showcase-content">
+      <div class="hero-banner">
+        <h1 class="hero-h1">Retro Pixel-Art Card Components for React</h1>
+        <p class="hero-p">
+          Extracted directly from <em>The Legend of Soham Wagale</em>. Each card is fully self-contained, responsive, and styled with warm parchment papers, glowing rarities, double-beveled pixel borders, and chiptune vibes. Click the <strong>Copy Code</strong> buttons to drop them straight into your React, Next.js, or Vite app.
+        </p>
+      </div>
+
+      <!-- 1. PixelBox -->
+      <section id="pixelbox" class="component-block">
+        <div class="component-header">
+          <div>
+            <div class="component-title-wrap">
+              <span class="component-name">&lt;PixelBox /&gt;</span>
+              <span class="component-tag">Container</span>
+            </div>
+            <p class="component-desc">The foundational double-beveled pixel container with golden drop shadows.</p>
+          </div>
+        </div>
+        <div class="preview-box">
+          <div class="rpg-pixel-box" style="padding: 24px; max-width: 420px; text-align: center;">
+            <h3 style="font-size: 16px; margin-bottom: 6px;">Double Bevel Pixel Box</h3>
+            <p style="font-size: 12px; color: var(--rpg-text-muted);">
+              Any child element wrapped in this container inherits the retro pixel outline and golden parchment background.
+            </p>
+          </div>
+        </div>
+        <div class="code-container">
+          <div class="code-toolbar">
+            <span style="font-size: 11px; color: var(--showcase-muted); font-family: monospace;">JSX Usage</span>
+            <button class="copy-btn" onclick="copySnippet('code-pixelbox')">📋 Copy Code</button>
+          </div>
+          <pre class="code-block" id="code-pixelbox">&lt;PixelBox style={{ padding: 24, maxWidth: 420 }}&gt;
+  &lt;h3&gt;Double Bevel Pixel Box&lt;/h3&gt;
+  &lt;p&gt;Any child element wrapped here inherits the retro pixel outline.&lt;/p&gt;
+&lt;/PixelBox&gt;</pre>
+        </div>
+      </section>
+
+      <!-- 2. ProjectCaseStudyCard -->
+      <section id="project-case-study" class="component-block">
+        <div class="component-header">
+          <div>
+            <div class="component-title-wrap">
+              <span class="component-name">&lt;ProjectCaseStudyCard /&gt;</span>
+              <span class="component-tag">Modal / Parchment</span>
+            </div>
+            <p class="component-desc">Parchment scroll case-study card for deep dives, missions, architectures, and demo links.</p>
+          </div>
+        </div>
+        <div class="preview-box">
+          <div class="rpg-pixel-box rpg-parchment-card" style="margin: 0 auto;">
+            <div class="rpg-parchment-title">
+              <span>Quest: AI Workflow Automation</span>
+              <span class="rpg-parchment-badge">FIG. 01 · HOLLOW OAK</span>
+            </div>
+            <div class="rpg-parchment-sub">Visual Workflow Builder · Next.js & TypeScript</div>
+            <div class="rpg-parchment-body">
+              <div class="rpg-parchment-section">
+                <div class="rpg-parchment-h4">THE MISSION & OVERVIEW</div>
+                <p>Built an AI-assisted visual workflow automation platform for designing, executing, and monitoring automated task pipelines through a node-based canvas.</p>
+              </div>
+              <div class="rpg-parchment-section">
+                <div class="rpg-parchment-h4">TECH ARTIFACTS / STACK</div>
+                <div class="rpg-tag-cloud">
+                  <span class="rpg-skill-tag">React</span>
+                  <span class="rpg-skill-tag">Next.JS</span>
+                  <span class="rpg-skill-tag">TypeScript</span>
+                  <span class="rpg-skill-tag">Prisma</span>
+                  <span class="rpg-skill-tag">Node.JS</span>
+                  <span class="rpg-skill-tag">AI Workers</span>
+                </div>
+              </div>
+              <div class="rpg-btn-row">
+                <a href="https://github.com/sohamwagale/AI-Workflow-Automation" target="_blank" rel="noopener noreferrer" class="rpg-parchment-btn">📜 REPOSITORY SOURCE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="code-container">
+          <div class="code-toolbar">
+            <span style="font-size: 11px; color: var(--showcase-muted); font-family: monospace;">JSX Usage</span>
+            <button class="copy-btn" onclick="copySnippet('code-casestudy')">📋 Copy Code</button>
+          </div>
+          <pre class="code-block" id="code-casestudy">&lt;ProjectCaseStudyCard
+  title="Quest: AI Workflow Automation"
+  badge="FIG. 01 · HOLLOW OAK"
+  subtitle="Visual Workflow Builder · Next.js & TypeScript"
+  overview="Built an AI-assisted visual workflow automation platform for pipelines."
+  architecture="Engineered interactive canvas nodes with Next.js, backed by Prisma ORM and Node.js execution workers."
+  results="Enables engineers to chain APIs and schedule distributed pipelines visually."
+  stack={["React", "Next.JS", "TypeScript", "Prisma", "Node.JS", "AI Workers"]}
+  githubUrl="https://github.com/sohamwagale/AI-Workflow-Automation"
+  liveUrl={null}
+  onClose={() => console.log('Closed')}
+/&gt;</pre>
+        </div>
+      </section>
+
+      <!-- 3. InventorySkillSlot & InventoryDetailCard -->
+      <section id="inventory-slot" class="component-block">
+        <div class="component-header">
+          <div>
+            <div class="component-title-wrap">
+              <span class="component-name">&lt;InventorySkillSlot /&gt; & &lt;InventoryDetailCard /&gt;</span>
+              <span class="component-tag">RPG Arsenal</span>
+            </div>
+            <p class="component-desc">Interactive skill item slots with 4 rarity borders (Common, Rare, Epic, Legendary) & detail inspector.</p>
+          </div>
+        </div>
+        <div class="preview-box" style="flex-direction: column; gap: 20px;">
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+            <div class="rpg-inv-slot rarity-legendary" onclick="selectSkillPreview('TypeScript', 'legendary', 'Languages', '+45 Type Armor', 'Immunity against null pointer curses and runtime anomalies.')">
+              <div class="rpg-inv-icon">🛡️</div>
+              <div class="rpg-inv-name">TypeScript</div>
+            </div>
+            <div class="rpg-inv-slot rarity-legendary" onclick="selectSkillPreview('React', 'legendary', 'Frontend', '+50 Component Weaving', 'Constructs reactive interfaces that enchant users.')">
+              <div class="rpg-inv-icon">⚛️</div>
+              <div class="rpg-inv-name">React</div>
+            </div>
+            <div class="rpg-inv-slot rarity-epic" onclick="selectSkillPreview('FastAPI', 'epic', 'Backend', '+42 High-Speed Routing', 'Powers asynchronous microservices with Pydantic shields.')">
+              <div class="rpg-inv-icon">⚡</div>
+              <div class="rpg-inv-name">FastAPI</div>
+            </div>
+            <div class="rpg-inv-slot rarity-rare" onclick="selectSkillPreview('Docker', 'rare', 'Cloud', '+38 Container Isolation', 'Encapsulates architectures into reproducible bastions.')">
+              <div class="rpg-inv-icon">🐳</div>
+              <div class="rpg-inv-name">Docker</div>
+            </div>
+            <div class="rpg-inv-slot rarity-common" onclick="selectSkillPreview('Git', 'common', 'Tools', '+25 Version Tracking', 'Creates reliable checkpoints across space and time.')">
+              <div class="rpg-inv-icon">📜</div>
+              <div class="rpg-inv-name">Git</div>
+            </div>
+          </div>
+
+          <div style="width: 100%; max-width: 480px;">
+            <div class="rpg-inv-desc-card" id="demo-skill-detail">
+              <div class="rpg-inv-desc-title">
+                <span id="demo-skill-title">TypeScript</span>
+                <span id="demo-skill-badge" style="font-size: 10px; color: var(--rpg-rarity-legendary); font-weight: bold; text-transform: uppercase;">LEGENDARY · LANGUAGES</span>
+              </div>
+              <div class="rpg-inv-desc-stat" id="demo-skill-stat">+45 Type Armor</div>
+              <div class="rpg-inv-desc-text" id="demo-skill-desc">Immunity against null pointer curses and runtime anomalies.</div>
+            </div>
+          </div>
+        </div>
+        <div class="code-container">
+          <div class="code-toolbar">
+            <span style="font-size: 11px; color: var(--showcase-muted); font-family: monospace;">JSX Usage</span>
+            <button class="copy-btn" onclick="copySnippet('code-inventory')">📋 Copy Code</button>
+          </div>
+          <pre class="code-block" id="code-inventory">// 1. Inventory Skill Slot
+&lt;InventorySkillSlot
+  name="TypeScript"
+  icon="🛡️"
+  rarity="legendary" // 'common' | 'rare' | 'epic' | 'legendary'
+  isSelected={true}
+  onClick={() =&gt; handleSelectSkill(skill)}
+/&gt;
+
+// 2. Inventory Detail Card
+&lt;InventoryDetailCard
+  name="TypeScript"
+  rarity="legendary"
+  category="Languages"
+  stat="+45 Type Armor"
+  description="Immunity against null pointer curses and runtime anomalies."
+/&gt;</pre>
+        </div>
+      </section>
+
+      <!-- 4. RpgDialogueCard -->
+      <section id="rpg-dialogue" class="component-block">
+        <div class="component-header">
+          <div>
+            <div class="component-title-wrap">
+              <span class="component-name">&lt;RpgDialogueCard /&gt;</span>
+              <span class="component-tag">Story & NPC</span>
+            </div>
+            <p class="component-desc">Classic RPG dialogue prompt box with speaker heading and branching response buttons.</p>
+          </div>
+        </div>
+        <div class="preview-box">
+          <div class="rpg-pixel-box rpg-dialogue-card">
+            <div class="rpg-dialogue-speaker">🧙‍♂️ Soham the Wanderer</div>
+            <div class="rpg-dialogue-text" id="demo-dialogue-text">
+              "Greetings adventurer! You have discovered my campsite in the enchanted woods. What would you like to discuss?"
+            </div>
+            <div class="rpg-dialogue-options">
+              <button class="rpg-dialogue-opt-btn" onclick="setDemoDialogue('I build scalable full-stack applications with React, TypeScript, FastAPI, and Node.js!')">Your tech craft?</button>
+              <button class="rpg-dialogue-opt-btn" onclick="setDemoDialogue('I am actively seeking software engineering internships to build scalable cloud architectures!')">What are you seeking?</button>
+              <button class="rpg-dialogue-opt-btn" onclick="setDemoDialogue('I have solved 140+ algorithmic challenges on LeetCode and mentored 150+ students at GDG!')">Fun facts!</button>
+            </div>
+          </div>
+        </div>
+        <div class="code-container">
+          <div class="code-toolbar">
+            <span style="font-size: 11px; color: var(--showcase-muted); font-family: monospace;">JSX Usage</span>
+            <button class="copy-btn" onclick="copySnippet('code-dialogue')">📋 Copy Code</button>
+          </div>
+          <pre class="code-block" id="code-dialogue">&lt;RpgDialogueCard
+  speaker="Soham the Wanderer"
+  avatar="🧙‍♂️"
+  text="Greetings adventurer! What would you like to discuss?"
+  options={[
+    { label: "Your tech craft?", onClick: () => showTopic('craft') },
+    { label: "What are you seeking?", onClick: () => showTopic('internships') },
+    { label: "Fun facts!", onClick: () => showTopic('facts') }
+  ]}
+/&gt;</pre>
+        </div>
+      </section>
+
+      <!-- 5. HudStatusCard -->
+      <section id="hud-status" class="component-block">
+        <div class="component-header">
+          <div>
+            <div class="component-title-wrap">
+              <span class="component-name">&lt;HudStatusCard /&gt;</span>
+              <span class="component-tag">Status & Game Feel</span>
+            </div>
+            <p class="component-desc">Top-bar HUD card with adventurer name, dynamic level counter, animated XP track, and day/night status.</p>
+          </div>
+        </div>
+        <div class="preview-box">
+          <div class="rpg-hud-card">
+            <span class="rpg-hud-title">SOHAM WAGALE</span>
+            <div class="rpg-xp-track" title="XP Progress">
+              <div class="rpg-xp-bar" style="width: 65%;"></div>
+            </div>
+            <span class="rpg-xp-text">LV. 3</span>
+            <span class="rpg-xp-text" style="color: var(--rpg-teal-glow); margin-left: 4px;">☀️ DAY</span>
+          </div>
+        </div>
+        <div class="code-container">
+          <div class="code-toolbar">
+            <span style="font-size: 11px; color: var(--showcase-muted); font-family: monospace;">JSX Usage</span>
+            <button class="copy-btn" onclick="copySnippet('code-hud')">📋 Copy Code</button>
+          </div>
+          <pre class="code-block" id="code-hud">&lt;HudStatusCard
+  name="SOHAM WAGALE"
+  level={3}
+  xpCurrent={65}
+  xpTarget={100}
+  timeStatus="☀️ DAY"
+/&gt;</pre>
+        </div>
+      </section>
+
+      <!-- 6. SimpleProjectCard -->
+      <section id="simple-project" class="component-block">
+        <div class="component-header">
+          <div>
+            <div class="component-title-wrap">
+              <span class="component-name">&lt;SimpleProjectCard /&gt;</span>
+              <span class="component-tag">Portfolio Grid</span>
+            </div>
+            <p class="component-desc">Dark enchanted-forest project card for modern developer portfolios and recruiter views.</p>
+          </div>
+        </div>
+        <div class="preview-box">
+          <article class="rpg-simple-card" style="max-width: 360px;">
+            <div>
+              <div class="rpg-simple-badge">LEETCODE · RUINED STONE TOWER</div>
+              <h3 class="rpg-simple-card-title">LeetCode – Online Code Platform</h3>
+              <p class="rpg-simple-card-desc">Built a containerized coding platform featuring problem browsing, code execution, submission evaluation, and user profiles.</p>
+              <div class="rpg-tag-cloud" style="margin-bottom: 14px;">
+                <span class="rpg-skill-tag">React</span>
+                <span class="rpg-skill-tag">Node.js</span>
+                <span class="rpg-skill-tag">FastAPI</span>
+                <span class="rpg-skill-tag">PostgreSQL</span>
+                <span class="rpg-skill-tag">Docker</span>
+              </div>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <a href="https://github.com/sohamwagale/Leetcode" target="_blank" rel="noopener noreferrer" class="rpg-parchment-btn" style="padding: 6px 12px; font-size: 11px;">GitHub</a>
+            </div>
+          </article>
+        </div>
+        <div class="code-container">
+          <div class="code-toolbar">
+            <span style="font-size: 11px; color: var(--showcase-muted); font-family: monospace;">JSX Usage</span>
+            <button class="copy-btn" onclick="copySnippet('code-simpleproj')">📋 Copy Code</button>
+          </div>
+          <pre class="code-block" id="code-simpleproj">&lt;SimpleProjectCard
+  name="LEETCODE"
+  zone="Ruined Stone Tower"
+  title="LeetCode – Online Code Platform"
+  description="Built a containerized coding platform featuring problem browsing, code execution, and test evaluations."
+  stack={["React", "Node.js", "FastAPI", "PostgreSQL", "Docker"]}
+  githubUrl="https://github.com/sohamwagale/Leetcode"
+  liveUrl={null}
+/&gt;</pre>
+        </div>
+      </section>
+
+      <!-- 7. ExperienceCard -->
+      <section id="experience-card" class="component-block">
+        <div class="component-header">
+          <div>
+            <div class="component-title-wrap">
+              <span class="component-name">&lt;ExperienceCard /&gt;</span>
+              <span class="component-tag">Career & Mentorship</span>
+            </div>
+            <p class="component-desc">Milestone card for work history, university mentorship, and leadership highlights.</p>
+          </div>
+        </div>
+        <div class="preview-box">
+          <div class="rpg-experience-card" style="max-width: 580px; width: 100%;">
+            <h3 class="rpg-exp-role">Mentor — Liberal Learning Course</h3>
+            <div class="rpg-exp-org">Google Developer Group (GDG) · DYPCET · Jun 2025 - Nov 2025</div>
+            <ul class="rpg-exp-bullets">
+              <li>Selected through Core Java interview to mentor second-year students in a 6-month course.</li>
+              <li>Delivered public speaking and live coding sessions to audiences of up to 150 students per session.</li>
+              <li>Conducted individual oral examinations at course completion to evaluate OOP grasp.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="code-container">
+          <div class="code-toolbar">
+            <span style="font-size: 11px; color: var(--showcase-muted); font-family: monospace;">JSX Usage</span>
+            <button class="copy-btn" onclick="copySnippet('code-experience')">📋 Copy Code</button>
+          </div>
+          <pre class="code-block" id="code-experience">&lt;ExperienceCard
+  role="Mentor — Liberal Learning Course"
+  org="Google Developer Group (GDG) · DYPCET"
+  period="Jun 2025 - Nov 2025"
+  bullets={[
+    "Selected through Core Java interview to mentor second-year students.",
+    "Delivered public speaking sessions to audiences of up to 150 students.",
+    "Conducted oral examinations to evaluate mastery of object-oriented concepts."
+  ]}
+/&gt;</pre>
+        </div>
+      </section>
+
+      <!-- 8. LegendaryItemCard -->
+      <section id="legendary-item" class="component-block">
+        <div class="component-header">
+          <div>
+            <div class="component-title-wrap">
+              <span class="component-name">&lt;LegendaryItemCard /&gt;</span>
+              <span class="component-tag">Reward Fanfare</span>
+            </div>
+            <p class="component-desc">Fanfare modal card with floating icon, academic accolades, and direct resume dispatch.</p>
+          </div>
+        </div>
+        <div class="preview-box">
+          <div class="rpg-pixel-box rpg-legendary-card">
+            <div class="rpg-legendary-icon">👑</div>
+            <div class="rpg-parchment-title" style="justify-content: center; border: none; margin-bottom: 4px;">
+              <span>LEGENDARY ITEM OBTAINED!</span>
+            </div>
+            <div class="rpg-parchment-badge" style="display: inline-block;">CURRICULUM VITAE · SOHAM WAGALE</div>
+            <div class="rpg-legendary-stats-box">
+              <div><strong>Education:</strong> B.Tech Computer Science (Expected 2027) · DYPCET</div>
+              <div><strong>CGPA:</strong> 8.6 / 10.0</div>
+              <div><strong>LeetCode:</strong> 140+ Algorithmic Challenges Solved</div>
+            </div>
+            <div class="rpg-btn-row" style="justify-content: center;">
+              <a href="https://github.com/sohamwagale" target="_blank" rel="noopener noreferrer" class="rpg-parchment-btn">📄 VIEW GITHUB RESUME</a>
+            </div>
+          </div>
+        </div>
+        <div class="code-container">
+          <div class="code-toolbar">
+            <span style="font-size: 11px; color: var(--showcase-muted); font-family: monospace;">JSX Usage</span>
+            <button class="copy-btn" onclick="copySnippet('code-legendary')">📋 Copy Code</button>
+          </div>
+          <pre class="code-block" id="code-legendary">&lt;LegendaryItemCard
+  icon="👑"
+  title="LEGENDARY ITEM OBTAINED!"
+  badge="CURRICULUM VITAE · SOHAM WAGALE"
+  stats={[
+    { label: "Education", value: "B.Tech Computer Science (Expected 2027) · DYPCET" },
+    { label: "CGPA", value: "8.6 / 10.0" },
+    { label: "LeetCode", value: "140+ Algorithmic Challenges Solved" }
+  ]}
+  actions={[
+    { label: "📄 VIEW GITHUB RESUME", href: "https://github.com/sohamwagale" },
+    { label: "📬 REQUEST PDF", href: "mailto:sohamwagale@gmail.com" }
+  ]}
+/&gt;</pre>
+        </div>
+      </section>
+
+      <!-- 9. QuestLogCard -->
+      <section id="quest-log" class="component-block">
+        <div class="component-header">
+          <div>
+            <div class="component-title-wrap">
+              <span class="component-name">&lt;QuestLogCard /&gt;</span>
+              <span class="component-tag">Quest Journal</span>
+            </div>
+            <p class="component-desc">Chronicle tracking card displaying quest state, zone landmark, and inspection trigger.</p>
+          </div>
+        </div>
+        <div class="preview-box" style="flex-direction: column; gap: 8px; width: 100%;">
+          <div class="rpg-quest-card" style="max-width: 460px; width: 100%;">
+            <div>
+              <div class="rpg-quest-name">✅ Quest: AI-WORKFLOW</div>
+              <div class="rpg-quest-zone">Hollow Oak (North)</div>
+            </div>
+            <button class="rpg-parchment-btn" style="padding: 4px 10px; font-size: 10px;">INSPECT</button>
+          </div>
+          <div class="rpg-quest-card" style="max-width: 460px; width: 100%;">
+            <div>
+              <div class="rpg-quest-name">⏳ Quest: SOCIETY-HUB</div>
+              <div class="rpg-quest-zone">Mushroom Village (East)</div>
+            </div>
+            <button class="rpg-parchment-btn" style="padding: 4px 10px; font-size: 10px;">INSPECT</button>
+          </div>
+        </div>
+        <div class="code-container">
+          <div class="code-toolbar">
+            <span style="font-size: 11px; color: var(--showcase-muted); font-family: monospace;">JSX Usage</span>
+            <button class="copy-btn" onclick="copySnippet('code-quest')">📋 Copy Code</button>
+          </div>
+          <pre class="code-block" id="code-quest">&lt;QuestLogCard
+  name="AI-WORKFLOW"
+  zone="Hollow Oak (North)"
+  isCompleted={true}
+  onInspect={() => openQuestModal(quest)}
+/&gt;</pre>
+        </div>
+      </section>
+
+      <!-- 10. AchievementToast -->
+      <section id="achievement-toast" class="component-block">
+        <div class="component-header">
+          <div>
+            <div class="component-title-wrap">
+              <span class="component-name">&lt;AchievementToast /&gt;</span>
+              <span class="component-tag">Notification</span>
+            </div>
+            <p class="component-desc">Toast alert with golden pixel outline, glowing icons, and entrance animation.</p>
+          </div>
+        </div>
+        <div class="preview-box" style="gap: 16px; flex-wrap: wrap;">
+          <div class="rpg-toast-card">
+            <span class="rpg-toast-icon">⭐</span>
+            <span>+50 XP: Fairy Mushroom Ring Secret Unlocked!</span>
+          </div>
+          <div class="rpg-toast-card">
+            <span class="rpg-toast-icon">🐉</span>
+            <span>Konami Code: Ancient Dragon Summoned!</span>
+          </div>
+        </div>
+        <div class="code-container">
+          <div class="code-toolbar">
+            <span style="font-size: 11px; color: var(--showcase-muted); font-family: monospace;">JSX Usage</span>
+            <button class="copy-btn" onclick="copySnippet('code-toast')">📋 Copy Code</button>
+          </div>
+          <pre class="code-block" id="code-toast">&lt;AchievementToast
+  icon="⭐"
+  message="+50 XP: Fairy Mushroom Ring Secret Unlocked!"
+/&gt;</pre>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast for Copy Notification -->
+  <div id="copy-toast">
+    <span>📋</span>
+    <span id="copy-toast-msg">React code copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Copy to clipboard helper
+    function copySnippet(elementId) {
+      const codeEl = document.getElementById(elementId);
+      if (!codeEl) return;
+      const text = codeEl.innerText;
+
+      navigator.clipboard.writeText(text).then(() => {
+        showCopyToast("React component code copied to clipboard!");
+      }).catch(() => {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showCopyToast("React component code copied to clipboard!");
+      });
+    }
+
+    function showCopyToast(msg) {
+      const toast = document.getElementById('copy-toast');
+      const toastMsg = document.getElementById('copy-toast-msg');
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    // Dynamic Skill Selector Preview
+    function selectSkillPreview(name, rarity, category, stat, desc) {
+      document.getElementById('demo-skill-title').textContent = name;
+      const badge = document.getElementById('demo-skill-badge');
+      badge.textContent = `${rarity.toUpperCase()} · ${category.toUpperCase()}`;
+      badge.style.color = `var(--rpg-rarity-${rarity})`;
+      document.getElementById('demo-skill-stat').textContent = stat;
+      document.getElementById('demo-skill-desc').textContent = desc;
+    }
+
+    // Dynamic Dialogue Preview
+    function setDemoDialogue(text) {
+      document.getElementById('demo-dialogue-text').textContent = `"${text}"`;
+    }
+
+    // Filter components in sidebar
+    function filterComponents(query) {
+      const q = query.toLowerCase().trim();
+      const items = document.querySelectorAll('.component-block');
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(q) ? 'block' : 'none';
+      });
+    }
+
+    // Highlight active link on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('.component-block');
+      const scrollPos = window.scrollY + 120;
+      sections.forEach(sec => {
+        if (sec.offsetTop <= scrollPos && (sec.offsetTop + sec.offsetHeight) > scrollPos) {
+          document.querySelectorAll('.nav-item').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sec.id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

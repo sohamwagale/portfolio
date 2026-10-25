@@ -1,6 +1,6 @@
 import { personalInfo } from '../data/portfolioData'
 
-export default function Navbar() {
+export default function Navbar({ onToggleTheme }) {
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
@@ -31,9 +31,22 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="nav-status">
-          <span className="nav-dot" />
-          {personalInfo.status.navText}
+        <div className="nav-right-cluster">
+          <div className="nav-status">
+            <span className="nav-dot" />
+            {personalInfo.status.navText}
+          </div>
+
+          <button
+            type="button"
+            className="theme-switch-pill"
+            onClick={onToggleTheme}
+            aria-label="Switch to Retro RPG Gamified Theme"
+            title="Switch to Retro RPG Gamified Theme"
+          >
+            <span className="theme-switch-icon">🎮</span>
+            <span className="theme-switch-text">RPG Mode</span>
+          </button>
         </div>
       </div>
     </nav>
